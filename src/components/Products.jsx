@@ -7,16 +7,25 @@ export default function Products() {
 
     useEffect(() => {
         async function fetchProducts() {
-            const { data, error } = await supabase
-                .from('interior_products')
-                .select('*')
-                .order('created_at', { ascending: false });
+            if (!supabase) {
+                setLoading(false);
+                return;
+            }
+            try {
+                const { data, error } = await supabase
+                    .from('interior_products')
+                    .select('*')
+                    .order('created_at', { ascending: false });
 
-            if (!error && data) {
-                setProducts(data);
+                if (!error && data) {
+                    setProducts(data);
+                }
+            } catch (err) {
+                console.error("Products fetch error:", err);
             }
             setLoading(false);
         }
+
         fetchProducts();
     }, []);
 
