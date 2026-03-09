@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 export function useAuth() {
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (!isSupabaseConfigured) {
+            setLoading(false);
+            return;
+        }
+
         // Get initial session
         supabase.auth.getSession().then(({ data: { session } }) => {
             setSession(session);
