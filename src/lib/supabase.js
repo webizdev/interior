@@ -7,4 +7,9 @@ if (!supabaseUrl || !supabaseAnonKey) {
     console.error("CRITICAL ERROR: Supabase URL or Anon Key is missing. Check your environment variables in Vercel.");
 }
 
-export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
+// Gunakan URL dummy untuk mencegah crash total saat env var hilang, 
+// sehingga komponen bisa render state kosong tanpa infinite loading.
+const safeUrl = supabaseUrl || 'https://placeholder.supabase.co';
+const safeKey = supabaseAnonKey || 'placeholder';
+
+export const supabase = createClient(safeUrl, safeKey);
