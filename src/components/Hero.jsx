@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 export default function Hero() {
     const [settings, setSettings] = useState(null);
 
     useEffect(() => {
         const fetchSettings = async () => {
-            const { data } = await supabase.from('interior_settings').select('hero_title, hero_subtitle, hero_image_url, contact_cs_number').single();
-            if (data) setSettings(data);
+            if (!isSupabaseConfigured) return;
+            try {
+                const { data, error } = await supabase.from('interior_settings').select('hero_title, hero_subtitle, hero_image_url, contact_cs_number').single();
+                if (!error && data) setSettings(data);
+            } catch (err) {
+                console.error("Hero settings fetch error:", err);
+            }
         };
         fetchSettings();
     }, []);

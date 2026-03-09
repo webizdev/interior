@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Link } from 'react-router-dom';
 
 export default function Blog() {
@@ -8,13 +8,21 @@ export default function Blog() {
 
     useEffect(() => {
         async function fetchBlogs() {
-            const { data, error } = await supabase
-                .from('interior_blogs')
-                .select('*')
-                .order('created_at', { ascending: false });
+            if (!isSupabaseConfigured) {
+                setLoading(false);
+                return;
+            }
+            try {
+                const { data, error } = await supabase
+                    .from('interior_blogs')
+                    .select('*')
+                    .order('created_at', { ascending: false });
 
-            if (!error && data) {
-                setBlogs(data);
+                if (!error && data) {
+                    setBlogs(data);
+                }
+            } catch (err) {
+                console.error("Blogs fetch error:", err);
             }
             setLoading(false);
         }

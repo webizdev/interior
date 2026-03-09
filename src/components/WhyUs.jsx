@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 export default function WhyUs() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
         const fetchItems = async () => {
-            const { data } = await supabase.from('interior_whyus').select('*').order('sort_order', { ascending: true });
-            if (data) setItems(data);
+            if (!isSupabaseConfigured) return;
+            try {
+                const { data, error } = await supabase.from('interior_whyus').select('*').order('sort_order', { ascending: true });
+                if (!error && data) setItems(data);
+            } catch (err) {
+                console.error("WhyUs fetch error:", err);
+            }
         };
         fetchItems();
     }, []);

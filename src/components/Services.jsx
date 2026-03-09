@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import * as LucideIcons from 'lucide-react';
 
 export default function Services() {
@@ -7,8 +7,13 @@ export default function Services() {
 
     useEffect(() => {
         const fetchItems = async () => {
-            const { data } = await supabase.from('interior_services').select('*').order('sort_order', { ascending: true });
-            if (data) setItems(data);
+            if (!isSupabaseConfigured) return;
+            try {
+                const { data, error } = await supabase.from('interior_services').select('*').order('sort_order', { ascending: true });
+                if (!error && data) setItems(data);
+            } catch (err) {
+                console.error("Services fetch error:", err);
+            }
         };
         fetchItems();
     }, []);

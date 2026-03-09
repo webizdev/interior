@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 export default function Gallery() {
     const [galleryItems, setGalleryItems] = useState([]);
@@ -7,13 +7,21 @@ export default function Gallery() {
 
     useEffect(() => {
         async function fetchGallery() {
-            const { data, error } = await supabase
-                .from('interior_gallery')
-                .select('*')
-                .order('created_at', { ascending: false });
+            if (!isSupabaseConfigured) {
+                setLoading(false);
+                return;
+            }
+            try {
+                const { data, error } = await supabase
+                    .from('interior_gallery')
+                    .select('*')
+                    .order('created_at', { ascending: false });
 
-            if (!error && data) {
-                setGalleryItems(data);
+                if (!error && data) {
+                    setGalleryItems(data);
+                }
+            } catch (err) {
+                console.error("Gallery fetch error:", err);
             }
             setLoading(false);
         }

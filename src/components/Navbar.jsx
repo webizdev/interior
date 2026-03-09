@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
@@ -10,8 +10,13 @@ export default function Navbar() {
 
     useEffect(() => {
         const fetchSettings = async () => {
-            const { data } = await supabase.from('interior_settings').select('website_name').single();
-            if (data) setSettings(data);
+            if (!isSupabaseConfigured) return;
+            try {
+                const { data, error } = await supabase.from('interior_settings').select('website_name').single();
+                if (!error && data) setSettings(data);
+            } catch (err) {
+                console.error("Navbar settings fetch error:", err);
+            }
         };
         fetchSettings();
     }, []);

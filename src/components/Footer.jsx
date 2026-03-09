@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, Instagram, Facebook, Twitter, Youtube, Hash } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 export default function Footer() {
     const [settings, setSettings] = useState(null);
 
     useEffect(() => {
         const fetchSettings = async () => {
-            const { data } = await supabase.from('interior_settings').select('*').single();
-            if (data) setSettings(data);
+            if (!isSupabaseConfigured) return;
+            try {
+                const { data, error } = await supabase.from('interior_settings').select('*').single();
+                if (!error && data) setSettings(data);
+            } catch (err) {
+                console.error("Footer settings fetch error:", err);
+            }
         };
         fetchSettings();
     }, []);

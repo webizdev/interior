@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Link } from 'react-router-dom';
 
 export default function Projects() {
@@ -7,12 +7,17 @@ export default function Projects() {
 
     useEffect(() => {
         const fetchProjects = async () => {
-            const { data } = await supabase
-                .from('interior_gallery')
-                .select('*')
-                .order('created_at', { ascending: false })
-                .limit(3);
-            if (data) setProjects(data);
+            if (!isSupabaseConfigured) return;
+            try {
+                const { data, error } = await supabase
+                    .from('interior_gallery')
+                    .select('*')
+                    .order('created_at', { ascending: false })
+                    .limit(3);
+                if (!error && data) setProjects(data);
+            } catch (err) {
+                console.error("Projects fetch error:", err);
+            }
         };
         fetchProjects();
     }, []);

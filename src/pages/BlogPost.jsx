@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { ArrowLeft } from 'lucide-react';
@@ -12,13 +12,21 @@ export default function BlogPost() {
 
     useEffect(() => {
         async function fetchPost() {
-            const { data, error } = await supabase
-                .from('interior_blogs')
-                .select('*')
-                .eq('id', id)
-                .single();
+            if (!isSupabaseConfigured) {
+                setLoading(false);
+                return;
+            }
+            try {
+                const { data, error } = await supabase
+                    .from('interior_blogs')
+                    .select('*')
+                    .eq('id', id)
+                    .single();
 
-            if (data) setPost(data);
+                if (!error && data) setPost(data);
+            } catch (err) {
+                console.error("BlogPost fetch error:", err);
+            }
             setLoading(false);
         }
         fetchPost();
