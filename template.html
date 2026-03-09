@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratna Property | Interior Design</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --sage-green: #8F9779;
+            --beige: #F5F5DC;
+            --soft-white: #FBFBFB;
+            --deep-earth: #4A4A4A;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--deep-earth);
+            background-color: var(--soft-white);
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .bg-sage {
+            background-color: #8F9779;
+        }
+
+        .text-sage {
+            color: #8F9779;
+        }
+
+        .border-sage {
+            border-color: #8F9779;
+        }
+
+        .bg-beige {
+            background-color: #F5F5DC;
+        }
+
+        /* Smooth Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Page Transition Effect */
+        .page-fade {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Scrollbar for CMS */
+        .cms-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .cms-scroll::-webkit-scrollbar-thumb {
+            background: #8F9779;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="showPage('home')">
+                    <span class="text-2xl font-bold tracking-tighter text-sage font-serif uppercase"><span id="view-profile-name-nav-1">Ratna</span>
+                    <span class="text-gray-800" id="view-profile-name-nav-2">Property</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="javascript:void(0)" onclick="showPage('home')"
+                        class="nav-link text-sm font-medium hover:text-sage transition">Home</a>
+                    <a href="javascript:void(0)" onclick="showPage('home', 'why-us')"
+                        class="nav-link text-sm font-medium hover:text-sage transition">Why Us</a>
+                    <a href="javascript:void(0)" onclick="showPage('home', 'services')"
+                        class="nav-link text-sm font-medium hover:text-sage transition">Services</a>
+                    <a href="javascript:void(0)" onclick="showPage('home', 'projects')"
+                        class="nav-link text-sm font-medium hover:text-sage transition">Projects</a>
+                    <a href="javascript:void(0)" onclick="showPage('gallery')"
+                        class="nav-link text-sm font-bold text-sage bg-sage/10 px-4 py-2 rounded-lg transition">Gallery</a>
+                    <a href="#" id="cta-wa-nav"
+                        class="bg-sage text-white px-6 py-2.5 rounded-full text-sm font-medium hover:opacity-90 transition">Konsultasi</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b px-4 py-4 space-y-2">
+            <a href="javascript:void(0)" onclick="showPage('home')" class="block py-2">Home</a>
+            <a href="javascript:void(0)" onclick="showPage('home', 'services')" class="block py-2">Services</a>
+            <a href="javascript:void(0)" onclick="showPage('gallery')" class="block py-2 font-bold text-sage">Gallery
+                Dokumentasi</a>
+            <a href="javascript:void(0)" onclick="showPage('home', 'projects')" class="block py-2">Projects</a>
+        </div>
+    </nav>
+
+    <!-- SWITCHABLE CONTENT AREA -->
+    <main>
+        <!-- HOME VIEW -->
+        <div id="view-home" class="page-fade">
+            <!-- HERO SECTION -->
+            <header id="home" class="relative h-[90vh] flex items-center pt-20 overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                    <img id="view-hero-img" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000" alt="Hero" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+                    <div class="max-w-2xl">
+                        <span class="inline-block px-4 py-1 bg-sage/80 backdrop-blur-sm rounded-full text-xs font-semibold tracking-widest uppercase mb-6">Interior Specialist</span>
+                        <h1 id="view-hero-title" class="text-5xl md:text-7xl font-serif mb-6 leading-tight">Wujudkan
+                            Rumah dan Kantor Impian yang Estetik & Fungsional</h1>
+                        <p id="view-hero-desc" class="text-lg md:text-xl text-gray-200 mb-10 font-light">Kami
+                            menghadirkan solusi desain interior yang mencerminkan kepribadian Anda dengan sentuhan
+                            modern.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#" id="cta-wa-hero"
+                                class="bg-white text-sage px-8 py-4 rounded-full font-semibold text-center hover:bg-beige transition shadow-xl">Konsultasi
+                                Gratis via WA</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- WHY US -->
+            <section id="why-us" class="py-24 bg-white border-b border-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-serif mb-4">Kenapa Memilih Kami?</h2>
+                        <div class="w-20 h-1 bg-sage mx-auto"></div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-12">
+                        <div class="text-center p-8 rounded-2xl bg-beige/30">
+                            <h3 class="text-xl font-bold mb-3">Berpengalaman</h3>
+                            <p class="text-gray-600 text-sm">Lebih dari 10 tahun mentransformasi hunian menjadi ruang
+                                penuh makna.</p>
+                        </div>
+                        <div class="text-center p-8 rounded-2xl bg-beige/30">
+                            <h3 class="text-xl font-bold mb-3">Harga Transparan</h3>
+                            <p class="text-gray-600 text-sm">Rincian biaya yang jujur dan detail sejak awal pengerjaan.
+                            </p>
+                        </div>
+                        <div class="text-center p-8 rounded-2xl bg-beige/30">
+                            <h3 class="text-xl font-bold mb-3">Desain Timeless</h3>
+                            <p class="text-gray-600 text-sm">Menggabungkan estetika klasik dan fungsionalitas modern.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SERVICES -->
+            <section id="services" class="py-24 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-serif mb-4">Layanan Kami</h2>
+                        <div class="w-20 h-1 bg-sage mx-auto"></div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div
+                            class="group p-8 rounded-3xl bg-sage/5 hover:bg-sage hover:text-white transition duration-500">
+                            <div class="mb-6">
+                                <svg class="w-12 h-12 text-sage group-hover:text-white transition" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                            </div>
+                            <h3 id="view-s1-title" class="text-2xl font-bold mb-4">Interior Rumah</h3>
+                            <p id="view-s1-desc" class="opacity-80 text-sm">Desain hunian yang nyaman, fungsional, dan
+                                mencerminkan karakter penghuninya.</p>
+                        </div>
+                        <div
+                            class="group p-8 rounded-3xl bg-sage/5 hover:bg-sage hover:text-white transition duration-500">
+                            <div class="mb-6">
+                                <svg class="w-12 h-12 text-sage group-hover:text-white transition" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                            </div>
+                            <h3 id="view-s2-title" class="text-2xl font-bold mb-4">Interior Kantor</h3>
+                            <p id="view-s2-desc" class="opacity-80 text-sm">Ruang kerja profesional yang meningkatkan
+                                produktivitas dan kenyamanan tim.</p>
+                        </div>
+                        <div
+                            class="group p-8 rounded-3xl bg-sage/5 hover:bg-sage hover:text-white transition duration-500">
+                            <div class="mb-6">
+                                <svg class="w-12 h-12 text-sage group-hover:text-white transition" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 id="view-s3-title" class="text-2xl font-bold mb-4">Interior Cafe</h3>
+                            <p id="view-s3-desc" class="opacity-80 text-sm">Konsep ruang komersial yang unik dan estetik
+                                untuk menarik minat pelanggan.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- GALLERY VIEW (HIDDEN BY DEFAULT) -->
+        <div id="view-gallery" class="hidden page-fade pt-32 pb-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif mb-4">Gallery Dokumentasi</h2>
+                    <p class="text-gray-500 max-w-2xl mx-auto">Momen di balik layar, proses pengerjaan di lapangan, dan
+                        kegiatan harian tim Ratna Property dalam melayani klien.</p>
+                    <div class="w-20 h-1 bg-sage mx-auto mt-6"></div>
+                </div>
+
+                <div id="gallery-render-target" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic Items from JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- GLOBAL SECTIONS (Always Visible) -->
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 bg-beige/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-serif mb-12 text-center">Proyek Terbaru</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-xl aspect-[4/5]">
+                    <img id="view-p1-img" src="https://storage.googleapis.com/arsitagx-master-article/article-photo/882/rumah-kecil-kontemporer-cover.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-4">
+                        <h4 id="view-p1-title" class="text-white text-xl font-serif text-center">Modern Minimalist</h4>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl aspect-[4/5]">
+                    <img id="view-p2-img" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-4">
+                        <h4 id="view-p2-title" class="text-white text-xl font-serif text-center">Luxury Kitchen</h4>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl aspect-[4/5]">
+                    <img id="view-p3-img" src="https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-4">
+                        <h4 id="view-p3-title" class="text-white text-xl font-serif text-center">Green Lake House</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section id="contact" class="py-24 bg-white text-center border-t border-gray-50">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-4xl font-serif mb-6">Siap Memulai Proyek Anda?</h2>
+            <p class="text-gray-600 mb-10">Kami siap mendengarkan visi Anda dan mengubahnya menjadi kenyataan yang
+                indah.</p>
+            <a href="#" id="cta-wa-bottom"
+                class="inline-block bg-sage text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition">Hubungi
+                Tim Kami</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-stone-400 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 border-b border-stone-800 pb-16">
+                <!-- Col 1: Brand -->
+                <div class="space-y-6">
+                    <span id="view-profile-name-footer" class="text-2xl font-serif font-bold text-white uppercase tracking-tighter">Ratna Property</span>
+                    <p class="text-sm leading-relaxed">Mewujudkan visi estetik hunian Anda melalui desain yang timeless
+                        dan fungsional. Terpercaya sejak 2016.</p>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase text-xs tracking-widest">Navigasi</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="javascript:void(0)" onclick="showPage('home')"
+                                class="hover:text-sage transition">Home</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('home', 'services')"
+                                class="hover:text-sage transition">Services</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('home', 'projects')"
+                                class="hover:text-sage transition">Projects</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('gallery')"
+                                class="hover:text-sage transition">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact -->
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase text-xs tracking-widest">Kontak & Alamat</h4>
+                    <p id="view-profile-address" class="text-sm leading-relaxed mb-4 italic">Jl. Manuntung RT 14
+                        Sepinggan Baru, Kota Balikpapan Kalimantan Timur Indonesia</p>
+                    <a id="view-profile-gmaps-link" href="#" target="_blank"
+                        class="text-xs text-sage font-bold hover:underline italic">LIHAT DI GOOGLE MAPS →</a>
+                </div>
+
+                <!-- Col 4: Social -->
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase text-xs tracking-widest">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a id="view-profile-wa-link" href="#" target="_blank"
+                            class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-sage hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.512-2.961-2.628-.086-.117-.705-.933-.705-1.777 0-.844.441-1.258.598-1.428.157-.17.342-.213.456-.213.114 0 .228.001.328.005.105.004.246-.04.385.292.144.344.492 1.2.535 1.285.043.085.071.185.014.3-.057.115-.085.19-.171.29-.086.1-.18.224-.257.3-.086.085-.176.177-.076.35.1.172.443.73.95 1.182.653.582 1.201.762 1.373.848.171.086.271.072.371-.043.101-.116.429-.496.543-.667.114-.171.228-.143.385-.086.157.057 1.014.478 1.186.564.172.086.286.129.329.2.043.072.043.415-.101.82z" />
+                            </svg>
+                        </a>
+                        <a id="view-profile-ig-link" href="#" target="_blank"
+                            class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-sage hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a id="view-profile-pin-link" href="#" target="_blank"
+                            class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-sage hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.017 0c-6.627 0-12 5.373-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.966 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-widest font-bold">
+                <p>&copy; <span id="cms-trigger" class="cursor-help hover:text-sage transition duration-500">2026</span>
+                    <span id="view-profile-name-copy">Ratna Property</span>. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FULL PAGE CMS DASHBOARD -->
+    <div id="cms-modal" class="fixed inset-0 z-[100] hidden bg-gray-100 flex flex-col overflow-hidden">
+        <!-- Top Bar -->
+        <div class="bg-white border-b px-8 py-4 flex justify-between items-center shadow-sm">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-sage rounded-xl flex items-center justify-center text-white font-bold">RP</div>
+                <div>
+                    <h3 class="font-bold text-gray-800">Admin Dashboard</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Ratna Property v5.0</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleCMS()" class="px-6 py-2 text-gray-500 font-semibold hover:bg-gray-100 rounded-lg transition">Keluar</button>
+                <button onclick="saveCMS()" class="px-8 py-2 bg-sage text-white font-bold rounded-lg shadow-md hover:opacity-90 transition">Simpan Semua Perubahan</button>
+            </div>
+        </div>
+
+        <div class="flex flex-1 overflow-hidden">
+            <!-- Sidebar Navigation -->
+            <div class="w-64 bg-white border-r flex flex-col p-4 space-y-2">
+                <button onclick="switchTab('profile')" class="cms-tab-btn active text-left px-4 py-3 rounded-lg font-medium transition">Profil Bisnis</button>
+                <button onclick="switchTab('hero')" class="cms-tab-btn text-left px-4 py-3 rounded-lg font-medium transition">Hero Section</button>
+                <button onclick="switchTab('services')" class="cms-tab-btn text-left px-4 py-3 rounded-lg font-medium transition">Layanan Service</button>
+                <button onclick="switchTab('projects')" class="cms-tab-btn text-left px-4 py-3 rounded-lg font-medium transition">Proyek Portofolio</button>
+                <button onclick="switchTab('gallery')" class="cms-tab-btn text-left px-4 py-3 rounded-lg font-medium transition">Dokumentasi Gallery</button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="flex-1 overflow-y-auto p-12 bg-gray-50 cms-scroll">
+                <div class="max-w-4xl mx-auto">
+
+                    <!-- TAB: PROFILE -->
+                    <div id="tab-profile" class="cms-tab-content space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border">
+                            <h2 class="text-xl font-bold mb-6 border-b pb-4">Profil & Kontak Bisnis</h2>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="col-span-2 text-xs font-bold text-sage uppercase">Identitas Utama</div>
+                                <div class="col-span-2">
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">Nama Brand / Website</label>
+                                    <input id="input-profile-name" type="text" class="w-full p-3 bg-gray-50 border rounded-xl">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">WhatsApp (Format: 62812...)</label>
+                                    <input id="input-profile-wa" type="text" class="w-full p-3 bg-gray-50 border rounded-xl">
+                                </div>
+                                <div class="col-span-2 text-xs font-bold text-sage uppercase mt-4">Media Sosial</div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">URL Instagram</label>
+                                    <input id="input-profile-ig" type="text" class="w-full p-3 bg-gray-50 border rounded-xl">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">URL Pinterest</label>
+                                    <input id="input-profile-pin" type="text" class="w-full p-3 bg-gray-50 border rounded-xl">
+                                </div>
+                                <div class="col-span-2 text-xs font-bold text-sage uppercase mt-4">Lokasi Fisik</div>
+                                <div class="col-span-2">
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">Alamat Lengkap</label>
+                                    <textarea id="input-profile-address" rows="2" class="w-full p-3 bg-gray-50 border rounded-xl"></textarea>
+                                </div>
+                                <div class="col-span-2">
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">Link Google Maps (URL Share)</label>
+                                    <input id="input-profile-gmaps" type="text" class="w-full p-3 bg-gray-50 border rounded-xl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: HERO -->
+                    <div id="tab-hero" class="cms-tab-content hidden space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border">
+                            <h2 class="text-xl font-bold mb-6 border-b pb-4">Konfigurasi Hero</h2>
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">Judul Utama (Headline)</label>
+                                    <input id="input-hero-title" type="text" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-sage focus:outline-none transition">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">Deskripsi Singkat (Subheadline)</label>
+                                    <textarea id="input-hero-desc" rows="3" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-sage focus:outline-none transition"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">URL Gambar Latar (Unsplash/Direct Link)</label>
+                                    <input id="input-hero-img" type="text" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-sage focus:outline-none transition">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: PROJECTS -->
+                    <div id="tab-projects" class="cms-tab-content hidden space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border">
+                            <h2 class="text-xl font-bold mb-6 border-b pb-4">Manajemen Proyek Portofolio</h2>
+                            <div class="space-y-8">
+                                <div class="grid grid-cols-2 gap-6 p-4 border rounded-xl">
+                                    <div class="col-span-2 text-xs font-bold text-sage uppercase">Project Item 1</div>
+                                    <input id="input-p1-title" type="text" placeholder="Nama Proyek" class="p-3 border rounded-lg">
+                                    <input id="input-p1-img" type="text" placeholder="URL Foto" class="p-3 border rounded-lg">
+                                </div>
+                                <div class="grid grid-cols-2 gap-6 p-4 border rounded-xl">
+                                    <div class="col-span-2 text-xs font-bold text-sage uppercase">Project Item 2</div>
+                                    <input id="input-p2-title" type="text" placeholder="Nama Proyek" class="p-3 border rounded-lg">
+                                    <input id="input-p2-img" type="text" placeholder="URL Foto" class="p-3 border rounded-lg">
+                                </div>
+                                <div class="grid grid-cols-2 gap-6 p-4 border rounded-xl">
+                                    <div class="col-span-2 text-xs font-bold text-sage uppercase">Project Item 3</div>
+                                    <input id="input-p3-title" type="text" placeholder="Nama Proyek" class="p-3 border rounded-lg">
+                                    <input id="input-p3-img" type="text" placeholder="URL Foto" class="p-3 border rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: SERVICES -->
+                    <div id="tab-services" class="cms-tab-content hidden space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border">
+                            <h2 class="text-xl font-bold mb-6 border-b pb-4">Edit Layanan (Services)</h2>
+                            <div class="space-y-6">
+                                <div class="p-4 border rounded-xl space-y-3">
+                                    <div class="text-xs font-bold text-sage">LAYANAN 1</div>
+                                    <input id="input-s1-title" type="text" placeholder="Nama Layanan" class="w-full p-2 border rounded">
+                                    <textarea id="input-s1-desc" placeholder="Deskripsi" class="w-full p-2 border rounded"></textarea>
+                                </div>
+                                <div class="p-4 border rounded-xl space-y-3">
+                                    <div class="text-xs font-bold text-sage">LAYANAN 2</div>
+                                    <input id="input-s2-title" type="text" placeholder="Nama Layanan" class="w-full p-2 border rounded">
+                                    <textarea id="input-s2-desc" placeholder="Deskripsi" class="w-full p-2 border rounded"></textarea>
+                                </div>
+                                <div class="p-4 border rounded-xl space-y-3">
+                                    <div class="text-xs font-bold text-sage">LAYANAN 3</div>
+                                    <input id="input-s3-title" type="text" placeholder="Nama Layanan" class="w-full p-2 border rounded">
+                                    <textarea id="input-s3-desc" placeholder="Deskripsi" class="w-full p-2 border rounded"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: GALLERY -->
+                    <div id="tab-gallery" class="cms-tab-content hidden space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border">
+                            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                                <h2 class="text-xl font-bold">Dokumentasi Kegiatan (Gallery)</h2>
+                                <button onclick="addGalleryItem()" class="bg-sage text-white px-4 py-2 rounded-lg font-bold text-sm hover:opacity-90 transition">+ Tambah Dokumentasi</button>
+                            </div>
+
+                            <!-- DYNAMIC GALLERY EDITOR LIST -->
+                            <div id="cms-gallery-editor-list" class="space-y-8">
+                                <!-- Dynamic Inputs from JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ROUTING SYSTEM
+        function showPage(pageId, sectionId = null) {
+            const homeView = document.getElementById('view-home');
+            const galleryView = document.getElementById('view-gallery');
+            const menu = document.getElementById('mobile-menu');
+            
+            menu.classList.add('hidden'); // Close mobile menu on nav
+            
+            if(pageId === 'home') {
+                homeView.classList.remove('hidden');
+                galleryView.classList.add('hidden');
+                if(sectionId) {
+                    setTimeout(() => {
+                        const target = document.getElementById(sectionId);
+                        if(target) target.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            } else if(pageId === 'gallery') {
+                homeView.classList.add('hidden');
+                galleryView.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // MOBILE MENU
+        const btn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(btn) btn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // DATA STATE
+        let appData = {
+            profile: {
+                name: 'Ratna Property',
+                wa: '6281347555595',
+                ig: 'https://www.instagram.com/ratselproperty?igsh=NnM1MmxveTR1bzRk',
+                pin: 'https://pinterest.com',
+                address: 'Jl. Manuntung RT 14  Sepinggan Baru, Kota Balikpapan Kalimantan Timur Indonesia',
+                gmaps: 'https://maps.app.goo.gl/vk1xLfqR8ueX3cTCA'
+            },
+            fixed: {
+                'hero-title': 'Wujudkan Rumah dan Kantor Impian yang Estetik & Fungsional',
+                'hero-desc': 'Kami menghadirkan solusi desain interior yang mencerminkan kepribadian Anda dengan sentuhan modern.',
+                'hero-img': 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000',
+                's1-title': 'Interior Rumah',
+                's1-desc': 'Desain hunian yang nyaman, fungsional, dan mencerminkan karakter penghuninya.',
+                's2-title': 'Interior Kantor',
+                's2-desc': 'Ruang kerja profesional yang meningkatkan produktivitas dan kenyamanan tim.',
+                's3-title': 'Interior Cafe',
+                's3-desc': 'Konsep ruang komersial yang unik dan estetik untuk menarik minat pelanggan.',
+                'p1-title': 'Modern Minimalist',
+                'p1-img': 'https://storage.googleapis.com/arsitagx-master-article/article-photo/882/rumah-kecil-kontemporer-cover.jpg',
+                'p2-title': 'Luxury Kitchen',
+                'p2-img': 'https://krmcustomhomes.com/wp-content/uploads/2025/04/Butlers-Pantry-1024x682.webp',
+                'p3-title': 'Green Lake House',
+                'p3-img': 'https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?auto=format&fit=crop&q=80&w=1000'
+            },
+            gallery: [
+                { title: 'Poscast Room', desc: 'Tim teknis melakukan pengerjaan podcast room dengan hasil terbaik.', img: 'https://ddfbhmswcjhtaahcifpm.supabase.co/storage/v1/object/public/gallery/uploads/1769494807119-721.jpeg', category: 'Site Visit' },
+                { title: 'Class Room', desc: 'Kami memperhatikan setiap detail dalam prosesnya agar ruangan menghadirkan suasana yang nyaman.', img: 'https://ddfbhmswcjhtaahcifpm.supabase.co/storage/v1/object/public/gallery/uploads/1769494881640-892.jpeg', category: 'Handover' },
+                { title: 'Meeting Room', desc: 'Interior yang indah memberikan spirit produktivitas team yang hebat.', img: 'https://ddfbhmswcjhtaahcifpm.supabase.co/storage/v1/object/public/gallery/uploads/1769494862999-791.jpeg', category: 'Internal' }
+            ]
+        };
+
+        // CMS LOGIC
+        const modal = document.getElementById('cms-modal');
+        const trigger = document.getElementById('cms-trigger');
+
+        function toggleCMS() {
+            if (modal.classList.contains('hidden')) {
+                const password = prompt("Masukkan password administrator:");
+                if (password === "ratna") {
+                    modal.classList.remove('hidden');
+                    loadCurrentToInputs();
+                } else if (password !== null) {
+                    alert("Password salah!");
+                }
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        if(trigger) trigger.addEventListener('click', toggleCMS);
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.cms-tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.cms-tab-btn').forEach(b => {
+                b.classList.remove('bg-sage', 'text-white', 'active');
+                b.classList.add('text-gray-600', 'hover:bg-gray-50');
+            });
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const btn = event.currentTarget;
+            btn.classList.add('bg-sage', 'text-white', 'active');
+            btn.classList.remove('text-gray-600', 'hover:bg-gray-50');
+        }
+
+        function loadCurrentToInputs() {
+            // Load Profile
+            for(let key in appData.profile) {
+                const input = document.getElementById(`input-profile-${key}`);
+                if(input) input.value = appData.profile[key];
+            }
+            // Load Fixed Elements
+            for(let key in appData.fixed) {
+                const input = document.getElementById(`input-${key}`);
+                if(input) input.value = appData.fixed[key];
+            }
+            // Load Gallery Items
+            renderGalleryCMS();
+        }
+
+        function renderGalleryCMS() {
+            const list = document.getElementById('cms-gallery-editor-list');
+            list.innerHTML = '';
+            appData.gallery.forEach((item, index) => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'p-6 bg-gray-50 rounded-xl space-y-4 border border-gray-200 relative';
+                itemEl.innerHTML = `
+                    <button onclick="removeGalleryItem(${index})" class="absolute top-4 right-4 text-red-500 hover:text-red-700 font-bold">Hapus</button>
+                    <div class="text-xs font-black text-gray-400 italic uppercase">DOKUMENTASI #${index + 1}</div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Judul" class="p-3 border rounded-lg col-span-2" value="${item.title}" onchange="updateGalleryData(${index}, 'title', this.value)">
+                        <input type="text" placeholder="Kategori (e.g. Site Visit)" class="p-3 border rounded-lg" value="${item.category}" onchange="updateGalleryData(${index}, 'category', this.value)">
+                        <input type="text" placeholder="URL Gambar" class="p-3 border rounded-lg" value="${item.img}" onchange="updateGalleryData(${index}, 'img', this.value)">
+                        <textarea placeholder="Deskripsi Singkat" class="p-3 border rounded-lg col-span-2" onchange="updateGalleryData(${index}, 'desc', this.value)">${item.desc}</textarea>
+                    </div>
+                `;
+                list.appendChild(itemEl);
+            });
+        }
+
+        function updateGalleryData(index, field, value) {
+            appData.gallery[index][field] = value;
+        }
+
+        function addGalleryItem() {
+            appData.gallery.push({
+                title: 'Judul Baru',
+                desc: 'Deskripsi kegiatan baru...',
+                img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1000',
+                category: 'Activity'
+            });
+            renderGalleryCMS();
+        }
+
+        function removeGalleryItem(index) {
+            if(confirm('Hapus dokumentasi ini?')) {
+                appData.gallery.splice(index, 1);
+                renderGalleryCMS();
+            }
+        }
+
+        function saveCMS() {
+            // Save Profile
+            for(let key in appData.profile) {
+                const input = document.getElementById(`input-profile-${key}`);
+                if(input) appData.profile[key] = input.value;
+            }
+            // Save Fixed Elements
+            for(let key in appData.fixed) {
+                const input = document.getElementById(`input-${key}`);
+                if(input) appData.fixed[key] = input.value;
+            }
+
+            localStorage.setItem('ratna_property_cms_v5', JSON.stringify(appData));
+            applyDataToUI();
+            toggleCMS();
+            alert('Perubahan berhasil disimpan secara global!');
+        }
+
+        function applyDataToUI() {
+            // Apply Profile to UI
+            const waLink = `https://wa.me/${appData.profile.wa}`;
+            
+            // Name update (Nav & Footer)
+            const nav1 = document.getElementById('view-profile-name-nav-1');
+            const nav2 = document.getElementById('view-profile-name-nav-2');
+            if(nav1 && nav2) {
+                const parts = appData.profile.name.split(' ');
+                nav1.innerText = parts[0] || '';
+                nav2.innerText = parts.slice(1).join(' ') || '';
+            }
+            
+            const footerName = document.getElementById('view-profile-name-footer');
+            if(footerName) footerName.innerText = appData.profile.name;
+            
+            const footerCopyName = document.getElementById('view-profile-name-copy');
+            if(footerCopyName) footerCopyName.innerText = appData.profile.name;
+
+            const addressEl = document.getElementById('view-profile-address');
+            if(addressEl) addressEl.innerText = appData.profile.address;
+            
+            const gmapsLink = document.getElementById('view-profile-gmaps-link');
+            if(gmapsLink) gmapsLink.href = appData.profile.gmaps;
+
+            const waIcon = document.getElementById('view-profile-wa-link');
+            if(waIcon) waIcon.href = waLink;
+            
+            const igIcon = document.getElementById('view-profile-ig-link');
+            if(igIcon) igIcon.href = appData.profile.ig;
+            
+            const pinIcon = document.getElementById('view-profile-pin-link');
+            if(pinIcon) pinIcon.href = appData.profile.pin;
+
+            // Update all CTA WhatsApp buttons
+            const heroWA = document.getElementById('cta-wa-hero');
+            if(heroWA) heroWA.href = waLink;
+            const navWA = document.getElementById('cta-wa-nav');
+            if(navWA) navWA.href = waLink;
+            const bottomWA = document.getElementById('cta-wa-bottom');
+            if(bottomWA) bottomWA.href = waLink;
+
+            // Apply Fixed
+            for(let key in appData.fixed) {
+                const el = document.getElementById(`view-${key}`);
+                if(el) {
+                    if(el.tagName === 'IMG') {
+                        el.src = appData.fixed[key];
+                    } else {
+                        el.innerText = appData.fixed[key];
+                    }
+                }
+            }
+
+            // Apply Gallery
+            const galleryTarget = document.getElementById('gallery-render-target');
+            if(galleryTarget) {
+                galleryTarget.innerHTML = appData.gallery.map(item => `
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="${item.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-sage uppercase tracking-widest">${item.category}</span>
+                            <h4 class="text-lg font-bold mt-2">${item.title}</h4>
+                            <p class="text-gray-500 text-sm mt-2">${item.desc}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function initCMS() {
+            const savedData = localStorage.getItem('ratna_property_cms_v5');
+            if(savedData) {
+                appData = JSON.parse(savedData);
+            }
+            applyDataToUI();
+        }
+
+        window.onload = initCMS;
+    </script>
+</body>
+
+</html>
